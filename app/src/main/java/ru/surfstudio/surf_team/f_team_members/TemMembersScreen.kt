@@ -2,12 +2,14 @@ package ru.surfstudio.surf_team.f_team_members
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -25,6 +27,7 @@ import ru.surfstudio.surf_team.domain.Employee
 import ru.surfstudio.surf_team.domain.UserInfo
 import ru.surfstudio.surf_team.ui.theme.SurfteamTheme
 
+@ExperimentalMaterialApi
 @Composable
 fun TeamMembersScreen(members: List<Employee>) {
     LazyColumn(
@@ -36,11 +39,14 @@ fun TeamMembersScreen(members: List<Employee>) {
     )
 }
 
+@ExperimentalMaterialApi
 @Composable
 fun TeamMember(employee: Employee) {
     Card(
-        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
-    , elevation = 5.dp
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+        elevation = 5.dp,
+        shape = RoundedCornerShape(12.dp),
+        onClick = {  }
     ) {
         Column(
             modifier = Modifier
@@ -93,6 +99,7 @@ fun TeamMember(employee: Employee) {
     }
 }
 
+@ExperimentalMaterialApi
 @Preview
 @Composable
 fun TeamMemberPreview() {

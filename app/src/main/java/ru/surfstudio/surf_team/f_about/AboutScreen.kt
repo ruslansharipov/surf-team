@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -11,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -38,7 +40,8 @@ fun AboutScreen() {
                 modifier = Modifier
                     .padding(horizontal = 20.dp)
                     .padding(top = 16.dp),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                color = colorResource(id = R.color.waterloo)
             )
             TextButton(
                 onClick = {
@@ -69,7 +72,9 @@ fun AboutScreen() {
                 },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(48.dp)
+                    .padding(16.dp)
+                    .height(48.dp),
+                shape = RoundedCornerShape(12.dp)
             ) {
                 Text(text = stringResource(id = R.string.about_chat_btn))
             }
