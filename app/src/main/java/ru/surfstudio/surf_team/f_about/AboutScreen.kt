@@ -1,5 +1,7 @@
 package ru.surfstudio.surf_team.f_about
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -8,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -18,6 +21,8 @@ import ru.surfstudio.surf_team.ui.theme.SurfteamTheme
 
 @Composable
 fun AboutScreen() {
+    val context = LocalContext.current
+
     Column {
         Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.Center) {
             Image(
@@ -36,7 +41,14 @@ fun AboutScreen() {
                 textAlign = TextAlign.Center
             )
             TextButton(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    context.startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("https://github.com/ruslansharipov/surf-team")
+                        )
+                    )
+                },
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(24.dp)
@@ -47,7 +59,14 @@ fun AboutScreen() {
 
         Box(contentAlignment = Alignment.BottomCenter) {
             Button(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    context.startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("https://t.me/surf_android")
+                        )
+                    )
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(48.dp)
