@@ -30,7 +30,7 @@ fun AboutScreen() {
             Image(
                 painter = painterResource(id = R.drawable.ic_android),
                 contentDescription = null,
-                colorFilter = ColorFilter.tint(Color.LightGray), // TODO заменить на цвет из темы
+                colorFilter = ColorFilter.tint(colorResource(id = R.color.waterloo)), // TODO заменить на цвет из темы
                 modifier = Modifier
                     .size(56.dp, 32.dp)
                     .align(Alignment.CenterHorizontally)

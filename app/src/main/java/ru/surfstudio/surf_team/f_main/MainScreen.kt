@@ -3,17 +3,29 @@ package ru.surfstudio.surf_team.f_main
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color.Companion.Blue
+import androidx.compose.ui.graphics.Color.Companion.Gray
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.ExperimentalUnitApi
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -26,6 +38,7 @@ import ru.surfstudio.surf_team.f_about.AboutScreen
 import ru.surfstudio.surf_team.f_team_members.TeamMembersScreen
 import ru.surfstudio.surf_team.ui.theme.SurfteamTheme
 
+@ExperimentalUnitApi
 @ExperimentalMaterialApi
 @ExperimentalPagerApi
 @Composable
@@ -41,6 +54,7 @@ fun MainScreen() {
     }
 }
 
+@ExperimentalUnitApi
 @ExperimentalMaterialApi
 @ExperimentalPagerApi
 @Composable
@@ -50,26 +64,45 @@ private fun MainSuccessState(state: MainState) {
     Column(modifier = Modifier.background(MaterialTheme.colors.background)) {
         TopBarRow()
         TabRow(
-            // Our selected tab is our current page
             selectedTabIndex = pagerState.currentPage,
-            // Override the indicator, using the provided pagerTabIndicatorOffset modifier
-            indicator = { tabPositions ->
-                TabRowDefaults.Indicator(
-                    Modifier.pagerTabIndicatorOffset(pagerState, tabPositions)
-                )
+            indicator = @Composable { tabPositions ->
+                Box(
+                    modifier = Modifier.tabIndicatorOffset(tabPositions[pagerState.currentPage])
+                ) {
+                    Box(
+                        Modifier
+                            .width(24.dp)
+                            .height(3.dp)
+                            .clip(RoundedCornerShape(2.dp))
+                            .background(Blue)
+                            .align(Center)
+                    )
+                }
             },
-            backgroundColor = MaterialTheme.colors.background
+            backgroundColor = MaterialTheme.colors.background,
+            divider = {}
         ) {
             // Add tabs for all of our pages
             MainTab.values().forEachIndexed { index: Int, tab: MainTab ->
                 Tab(
-                    text = { Text(stringResource(id = tab.titleRes)) },
+                    text = {
+                        Text(
+                            text = stringResource(id = tab.titleRes).toUpperCase(Locale.current),
+                            fontWeight = FontWeight.Bold,
+                            fontSize = TextUnit(16f, TextUnitType.Sp),
+                            color = if (pagerState.currentPage == index) {
+                                Blue
+                            } else {
+                                Gray
+                            }
+                        )
+                           },
                     selected = pagerState.currentPage == index,
                     onClick = {
                           scope.launch {
                               pagerState.scrollToPage(index)
                           }
-                    },
+                    }
                 )
             }
         }
@@ -104,7 +137,7 @@ private fun TopBarRow() {
 
 @Composable
 fun MainLoadingState() {
-    Column {
+    Column(modifier = Modifier.background(MaterialTheme.colors.background)) {
         TopBarRow()
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Center) {
             Text(
