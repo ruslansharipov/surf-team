@@ -46,7 +46,7 @@ fun AboutScreen() {
         }
 
         Box(contentAlignment = Alignment.BottomCenter) {
-            TextButton(
+            Button(
                 onClick = { /*TODO*/ },
                 modifier = Modifier
                     .fillMaxWidth()

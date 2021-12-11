@@ -3,4 +3,10 @@
     <string name="about_chat_btn">Перейти в чат участников</string>
     <string name="about_subtitle">Приложение сделано в рамках образовательного мероприятия android отдела</string>
     <string name="about_github">ссылка на гитхаб</string>
+
+    <string name="main_tab_members">Сотрудники</string>
+    <string name="main_tab_about">О приложении</string>
+    <string name="main_retry">Повторить</string>
+    <string name="main_error">При загрузке данных произошла ошибка</string>
+    <string name="main_loading">Загрузка данных...</string>
 </resources>

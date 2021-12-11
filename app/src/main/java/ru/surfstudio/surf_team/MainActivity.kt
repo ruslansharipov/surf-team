@@ -8,17 +8,32 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.pager.ExperimentalPagerApi
+import ru.surfstudio.surf_team.f_main.MainScreen
+import ru.surfstudio.surf_team.f_splash.SplashScreen
+import ru.surfstudio.surf_team.navigation.Main
+import ru.surfstudio.surf_team.navigation.Splash
 import ru.surfstudio.surf_team.ui.theme.SurfteamTheme
 
 class MainActivity : ComponentActivity() {
+    @ExperimentalPagerApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
             SurfteamTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Surf")
+                val navController = rememberNavController()
+                NavHost(navController = navController, startDestination = Splash) {
+                    composable(Splash) {
+                        SplashScreen {
+                            navController.popBackStack()
+                            navController.navigate(Main)
+                        }
+                    }
+                    composable(Main) { MainScreen() }
                 }
             }
         }
