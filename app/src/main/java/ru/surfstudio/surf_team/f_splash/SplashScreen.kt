@@ -1,7 +1,7 @@
 package ru.surfstudio.surf_team.f_splash
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -21,13 +20,21 @@ import ru.surfstudio.surf_team.ui.theme.SurfteamTheme
 @Composable
 fun SplashScreen() {
     Column(
-        modifier = Modifier.padding(top = 72.dp, bottom = 24.dp)
+        modifier = Modifier
+            .padding(top = 72.dp, bottom = 24.dp)
             .fillMaxHeight()
     ) {
         Image(
-            painter = painterResource(id = R.drawable.ic_splash_logo),
+            painter = painterResource(
+                id = if (isSystemInDarkTheme()) {
+                    R.drawable.ic_splash_logo_dark
+                } else {
+                    R.drawable.ic_splash_logo_light
+                }
+            ),
             contentDescription = null,
-            modifier = Modifier.padding(horizontal = 20.dp)
+            modifier = Modifier
+                .padding(horizontal = 20.dp)
                 .weight(1f)
         )
         Image(
