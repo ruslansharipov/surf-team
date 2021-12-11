@@ -1,5 +1,6 @@
 package ru.surfstudio.surf_team.f_team_members
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -8,8 +9,11 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberImagePainter
+import coil.transform.CircleCropTransformation
 import ru.surfstudio.surf_team.domain.Employee
 import ru.surfstudio.surf_team.domain.UserInfo
 import ru.surfstudio.surf_team.ui.theme.SurfteamTheme
@@ -34,10 +38,12 @@ fun TeamMember(employee: Employee) {
         Row(
             modifier = Modifier.padding(top = 12.dp)
         ) {
-            Box(
-                modifier = Modifier
-                    .background(Color.Black)
-                    .size(34.dp, 34.dp)
+            Image(
+                painter = rememberImagePainter(data = employee.photoUrl, builder = {
+                    transformations(CircleCropTransformation())
+                }),
+                contentDescription = null,
+                modifier = Modifier.size(34.dp, 34.dp)
             )
             Column(
                 modifier = Modifier.padding(start = 16.dp)

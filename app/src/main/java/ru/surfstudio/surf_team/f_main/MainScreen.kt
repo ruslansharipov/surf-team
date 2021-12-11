@@ -89,9 +89,7 @@ private fun MainSuccessState(state: MainState) {
 fun MainLoadingState() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Center) {
         Text(
-            text = stringResource(id = R.string.main_loading),
-            modifier = Modifier.fillMaxSize(),
-            textAlign = TextAlign.Center
+            text = stringResource(id = R.string.main_loading)
         )
     }
 }

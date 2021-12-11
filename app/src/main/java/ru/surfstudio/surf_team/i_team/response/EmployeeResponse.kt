@@ -27,6 +27,6 @@ data class EmployeeResponse(
     val userInfo: UserInfoResponse = UserInfoResponse()
 ) {
     fun toEmployee() : Employee {
-        return Employee(createdDate, currentProject, department, experience, id, photoUrl, position, skills)
+        return Employee(createdDate, currentProject, department, experience, id, position, skills, userInfo.toUserInfo())
     }
 }

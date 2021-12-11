@@ -6,8 +6,10 @@ data class Employee(
     val department: String = "",
     val experience: String = "",
     val id: String = "",
-    val photoUrl: String = "",
     val position: String = "",
     val skills: List<String> = listOf(),
     val userInfo: UserInfo = UserInfo()
-)
+){
+    val photoUrl: String = "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/28788/47e2fd514411e18b76af786d7417062d/100x64_3"
+}
+

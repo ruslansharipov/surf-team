@@ -3,6 +3,7 @@ package ru.surfstudio.surf_team.f_main
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import ru.surfstudio.surf_team.dependencies.ServiceLocator
@@ -29,6 +30,7 @@ class MainViewModel(
 
     private fun loadMainData() {
         viewModelScope.launch {
+            delay(600)
             mainStateFlow.emitAll(createMainStateFlow())
         }
     }
