@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">surf-team</string>
+    <string name="about_chat_btn">Перейти в чат участников</string>
+    <string name="about_subtitle">Приложение сделано в рамках образовательного мероприятия android отдела</string>
+    <string name="about_github">ссылка на гитхаб</string>
 </resources>
