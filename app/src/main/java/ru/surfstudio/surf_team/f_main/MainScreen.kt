@@ -53,7 +53,8 @@ private fun MainSuccessState(state: MainState) {
                 TabRowDefaults.Indicator(
                     Modifier.pagerTabIndicatorOffset(pagerState, tabPositions)
                 )
-            }
+            },
+            backgroundColor = MaterialTheme.colors.background
         ) {
             // Add tabs for all of our pages
             MainTab.values().forEachIndexed { index: Int, tab: MainTab ->

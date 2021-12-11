@@ -10,6 +10,6 @@ data class Employee(
     val skills: List<String> = listOf(),
     val userInfo: UserInfo = UserInfo()
 ){
-    val photoUrl: String = "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/28788/47e2fd514411e18b76af786d7417062d/100x64_3"
+    val photoUrl: String = "https://pbs.twimg.com/profile_images/378800000666093975/cbe970ce9a19d2c6bec0d06c6004ccf0_400x400.png"
 }
 
